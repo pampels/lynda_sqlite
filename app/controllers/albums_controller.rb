@@ -24,7 +24,6 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
-    logger.info(album_params)
     @album = Album.new(album_params)
 
     respond_to do |format|

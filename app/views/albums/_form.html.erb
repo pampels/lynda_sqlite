@@ -16,16 +16,12 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :artist %><br>
-    <%= f.text_field :artist %>
-  </div>
-  <div class="field">
     <%= f.label :genre %><br>
     <%= f.text_field :genre %>
   </div>
   <div class="field">
     <%= f.label :artist_id %><br>
-    <%= f.text_field :artist_id %>
+    <%= collection_select(:album, :artist_id, Artist.all, :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
