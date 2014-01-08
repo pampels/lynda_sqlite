@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140108064604) do
+ActiveRecord::Schema.define(version: 20140108072302) do
 
   create_table "albums", force: true do |t|
     t.string   "title"
@@ -36,5 +36,13 @@ ActiveRecord::Schema.define(version: 20140108064604) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "features_assignments", force: true do |t|
+    t.integer "album_id"
+    t.integer "feature_id"
+  end
+
+  add_index "features_assignments", ["album_id"], name: "index_features_assignments_on_album_id"
+  add_index "features_assignments", ["feature_id"], name: "index_features_assignments_on_feature_id"
 
 end
