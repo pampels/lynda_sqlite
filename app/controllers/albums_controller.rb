@@ -40,7 +40,13 @@ class AlbumsController < ApplicationController
   # PATCH/PUT /albums/1
   # PATCH/PUT /albums/1.json
   def update
+    for checkbox_id in params[:features_list]
+      feature = Feature.find(checkbox_id)
+      @album.features << feature
+    end
+
     respond_to do |format|
+
       if @album.update(album_params)
         format.html { redirect_to @album, notice: 'Album was successfully updated.' }
         format.json { head :no_content }
