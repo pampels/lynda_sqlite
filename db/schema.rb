@@ -59,8 +59,11 @@ ActiveRecord::Schema.define(version: 20140108142929) do
 
   create_table "orders", force: true do |t|
     t.string   "invoice_number"
+    t.integer  "customer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "orders", ["customer_id"], name: "index_orders_on_customer_id"
 
 end
