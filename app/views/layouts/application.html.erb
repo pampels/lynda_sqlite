@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= link_to 'Albums', :controller => 'albums', :action => 'index' %> | <%= link_to 'Artists', :controller => 'artists', :action => 'index' %>
+<%= link_to 'Albums', :controller => 'albums', :action => 'index' %> | <%= link_to 'Artists', :controller => 'artists', :action => 'index' %> | <%= link_to 'Features', controller: 'features', action: 'index' %>
 <%= yield %>
 
 </body>
