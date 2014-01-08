@@ -30,5 +30,12 @@
   <%= @album.published_date %>
 </p>
 
+<p>
+  <strong>Album Features:</strong>
+  <% for feature in @album.features %>
+    <%= link_to feature.name, feature %>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>
