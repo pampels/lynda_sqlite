@@ -40,12 +40,22 @@ class AlbumsController < ApplicationController
   # PATCH/PUT /albums/1
   # PATCH/PUT /albums/1.json
   def update
-    for checkbox_id in params[:features_list]
+    @features = Feature.all
+    checked_features = []
+    features_list = params[:features_list] || []
+    for checkbox_id in features_list
       feature = Feature.find(checkbox_id)
+      checked_features << feature
 
       # add feature to album features if it's not already a feature
       @album.features << feature unless @album.features.include?(feature)
     end
+
+    missing_features = @features - checked_features
+    for feature in missing_features
+      @album.features.delete(feature) if @album.features.include?(feature)
+    end
+
 
     respond_to do |format|
 
