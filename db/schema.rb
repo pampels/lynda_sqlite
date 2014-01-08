@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140108141224) do
+ActiveRecord::Schema.define(version: 20140108142929) do
 
   create_table "albums", force: true do |t|
     t.string   "title"
@@ -56,5 +56,11 @@ ActiveRecord::Schema.define(version: 20140108141224) do
 
   add_index "line_items", ["album_id"], name: "index_line_items_on_album_id"
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id"
+
+  create_table "orders", force: true do |t|
+    t.string   "invoice_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

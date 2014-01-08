@@ -1,4 +1,6 @@
 LyndaSqlite::Application.routes.draw do
+  resources :orders
+
   resources :features
 
   resources :artists
