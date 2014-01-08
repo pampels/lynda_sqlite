@@ -42,7 +42,9 @@ class AlbumsController < ApplicationController
   def update
     for checkbox_id in params[:features_list]
       feature = Feature.find(checkbox_id)
-      @album.features << feature
+
+      # add feature to album features if it's not already a feature
+      @album.features << feature unless @album.features.include?(feature)
     end
 
     respond_to do |format|
