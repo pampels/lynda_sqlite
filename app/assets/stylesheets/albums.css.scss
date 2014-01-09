@@ -22,6 +22,16 @@ $album-bg-color: #f3f3f3;
 			}
 		}
 
+		.add-to-cart-container{
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 10px 20px;
+			background: #ff6600;
+			color: #fff;
+			cursor: pointer;
+		}
+
 		.album-details{
 			float: left;
 			width: 100%;
