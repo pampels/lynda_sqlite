@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140108150748) do
+ActiveRecord::Schema.define(version: 20140109083915) do
 
   create_table "albums", force: true do |t|
     t.string   "title"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20140108150748) do
     t.string   "genre"
     t.integer  "artist_id"
     t.decimal  "price",          precision: 8, scale: 2, default: 9.99
+    t.string   "image_path"
   end
 
   create_table "artists", force: true do |t|
