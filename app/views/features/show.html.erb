@@ -6,9 +6,9 @@
 </p>
 
 <p>
-  <strong>Albums that have this feature: </strong>
+  <strong>Albums that have this feature: </strong><br>
   <% for album in @feature.albums %>
-  <%= link_to album.title, album %>
+  <%= link_to album.title, album %> by <%= link_to album.artist.name, album.artist %> <br/>
   <% end %>
 </p>
 
