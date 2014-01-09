@@ -1,22 +1,23 @@
 // Place all the styles related to the Albums controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+$cover-container-width: 200px;
+$album-bg-color: #f3f3f3;
 .albums-container{
 	width: 100%;
 	padding: 10px 20px;
 	.album{
 		position: relative;
-		padding: 10px 0;
+		padding: 10px;
 		min-height: 220px;
 		h2{
 			margin-top: 2px;
 		}
 		.cover-container{
 			position: absolute;
-			width: 200px;
+			width: $cover-container-width;
 			img{
-				width: 200px;
+				width: $cover-container-width;
 				height: auto;
 			}
 		}
@@ -24,10 +25,18 @@
 		.album-details{
 			float: left;
 			width: 100%;
-			padding-left: 210px;
+			padding-left: $cover-container-width + 20px;
 			.album-price{
 				margin-left: 20px;
 			}
 		}
 	}
+
+	.album:nth-child(odd){
+		background: darken($album-bg-color, 5%);
+	}
+	.album:nth-child(even){
+		background: $album-bg-color;
+	}
+
 }
