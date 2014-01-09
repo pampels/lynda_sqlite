@@ -25,7 +25,8 @@ class AlbumsController < ApplicationController
   # POST /albums.json
   def create
     @album = Album.new(album_params)
-
+    checked_features = add_album_features
+    remove_album_features(checked_features)
     respond_to do |format|
       if @album.save
         format.html { redirect_to @album, notice: 'Album was successfully created.' }
@@ -40,23 +41,8 @@ class AlbumsController < ApplicationController
   # PATCH/PUT /albums/1
   # PATCH/PUT /albums/1.json
   def update
-    @features = Feature.all
-    checked_features = []
-    features_list = params[:features_list] || []
-    for checkbox_id in features_list
-      feature = Feature.find(checkbox_id)
-      checked_features << feature
-
-      # add feature to album features if it's not already a feature
-      @album.features << feature unless @album.features.include?(feature)
-    end
-
-    missing_features = @features - checked_features
-    for feature in missing_features
-      @album.features.delete(feature) if @album.features.include?(feature)
-    end
-
-
+    checked_features = add_album_features
+    remove_album_features(checked_features)
     respond_to do |format|
 
       if @album.update(album_params)
@@ -88,5 +74,24 @@ class AlbumsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def album_params
       params.require(:album).permit(:title, :description, :published_date, :genre, :artist_id, :price)
+    end
+
+    def add_album_features
+      checked_features = []
+      features_list = params[:features_list] || []
+      for checkbox_id in features_list
+        feature = Feature.find(checkbox_id)
+        checked_features << feature
+        # add feature to album features if it's not already a feature
+        @album.features << feature unless @album.features.include?(feature)
+      end
+      return checked_features
+    end
+
+    def remove_album_features(checked_features)
+      missing_features = Feature.all - checked_features
+      for feature in missing_features
+        @album.features.delete(feature) if @album.features.include?(feature)
+      end
     end
 end
