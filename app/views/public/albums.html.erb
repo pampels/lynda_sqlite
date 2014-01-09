@@ -1,0 +1,17 @@
+<div class="albums-container">
+  <h1>OPMusic Store</h1>
+  <% @albums.each do |album| %>
+  <div class="album clearfix">
+    <div class="cover-container">
+      <%= image_tag album.image_path %>
+    </div>
+    <div class="album-details">
+      <h2><span><%= album.title %></span><span class="album-price"><%= number_to_currency(album.price) %></span></h2>
+      <p><strong>Artist:</strong> <%= album.artist.name %></p>
+      <p><strong>Released year:</strong> <%= album.published_date.strftime('%B %Y') %></p>
+      <p><strong>Genre:</strong> <%= album.genre %></p>
+      <p><%= album.description %></p>
+    </div>
+  </div>
+  <% end %>
+</div>
