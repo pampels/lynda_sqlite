@@ -6,9 +6,9 @@
       <%= image_tag album.image_path %>
     </div>
     <div class="album-details">
-      <h2><span><%= link_to album.title, album %></span><span class="album-price"><%= album.price %></span></h2>
+      <h2><span><%= link_to album.title, album %></span><span class="album-price"><%= number_to_currency(album.price) %></span></h2>
       <p><strong>Artist:</strong> <%= link_to album.artist.name, album.artist %></p>
-      <p><strong>Released year:</strong> <%= album.published_date %></p>
+      <p><strong>Released year:</strong> <%= album.published_date.strftime('%B %Y') %></p>
       <p><strong>Genre:</strong> <%= album.genre %></p>
       <p><%= album.description %></p>
     </div>
