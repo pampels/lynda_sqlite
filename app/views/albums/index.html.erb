@@ -8,6 +8,7 @@
       <th>Genre</th>
       <th>Description</th>
       <th>Published date</th>
+      <th>Price</th>
       <th></th>
       <th></th>
       <th></th>
@@ -22,6 +23,7 @@
         <td><%= album.genre %></td>
         <td><%= album.description %></td>
         <td><%= album.published_date %></td>
+        <td><%= album.price %></td>
         <td><%= link_to 'Edit', edit_album_path(album) %></td>
         <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

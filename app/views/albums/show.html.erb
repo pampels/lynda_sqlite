@@ -31,6 +31,11 @@
 </p>
 
 <p>
+  <strong>Price</strong>
+  <%= @album.price %>
+</p>
+
+<p>
   <strong>Album Features:</strong>
   <% for feature in @album.features %>
     <%= link_to feature.name, feature %>
