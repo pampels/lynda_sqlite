@@ -1,0 +1,8 @@
+<div class="menu">
+	<ul>
+		<% links = %w(albums artists features orders customers) %>
+		<% for link in links %>
+			<li><%= link_to link.upcase, :controller => link, :action => 'index' %></li>
+		<% end %>
+	</ul>
+</div>
