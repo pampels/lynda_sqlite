@@ -3,7 +3,7 @@
   <% @albums.each do |album| %>
   <div class="album clearfix">
     <div class="cover-container">
-      <%= image_tag 'bente.jpg' %>
+      <%= image_tag album.image_path %>
     </div>
     <div class="album-details">
       <h2><span><%= link_to album.title, album %></span><span class="album-price"><%= album.price %></span></h2>
