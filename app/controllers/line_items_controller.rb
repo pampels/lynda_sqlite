@@ -29,7 +29,7 @@ class LineItemsController < ApplicationController
   	logger.info('----------------------------')
   	logger.info(album)
     # @line_item = LineItem.new(line_item_params)
-    @line_item = @cart.line_items.build(:album => album)
+    @line_item = @cart.add_album(album.id)
 
     respond_to do |format|
       if @line_item.save
