@@ -1,4 +1,4 @@
-class LineItemController < ApplicationController
+class LineItemsController < ApplicationController
 	before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   # GET /line_items
@@ -24,11 +24,16 @@ class LineItemController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    @line_item = LineItem.new(line_item_params)
+  	@cart = current_cart
+  	album = Album.find(params[:album_id])
+  	logger.info('----------------------------')
+  	logger.info(album)
+    # @line_item = LineItem.new(line_item_params)
+    @line_item = @cart.line_items.build(:album => album)
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item, notice: 'LineItem was successfully created.' }
+        format.html { redirect_to line_items_url, notice: 'LineItem was successfully created.' }
         format.json { render action: 'show', status: :created, location: @line_item }
       else
         format.html { render action: 'new' }
