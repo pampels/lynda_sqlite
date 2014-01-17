@@ -6,7 +6,8 @@
       <%= image_tag album.image_path %>
     </div>
     <div class="add-to-cart-container">
-      Add to Cart
+      <!-- Add to Cart -->
+      <%= button_to 'Add to Cart', line_items_path(album_id: album) %>
     </div>
     <div class="album-details">
       <h2><span><%= album.title %></span><span class="album-price"><%= number_to_currency(album.price) %></span></h2>
