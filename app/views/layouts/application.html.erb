@@ -7,11 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= link_to 'Albums', :controller => 'albums', :action => 'index' %> | 
-<%= link_to 'Artists', :controller => 'artists', :action => 'index' %> | 
-<%= link_to 'Features', controller: 'features', action: 'index' %> | 
-<%= link_to 'Orders', controller: 'orders', action: 'index' %> | 
-<%= link_to 'Customers', controller: 'customers', action: 'index' %>
+<%= link_to 'Albums', albums_path %> |
+<%= link_to 'Artists', artists_path %> |
+<%= link_to 'Features', features_path %> |
+<%= link_to 'Orders', orders_path %> |
+<%= link_to 'Customers', customers_path %>
 <%= yield %>
 
 </body>
