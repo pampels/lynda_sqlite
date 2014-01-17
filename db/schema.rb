@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140117060952) do
+ActiveRecord::Schema.define(version: 20140117062303) do
 
   create_table "albums", force: true do |t|
     t.string   "title"
@@ -67,9 +67,11 @@ ActiveRecord::Schema.define(version: 20140117060952) do
     t.decimal  "price",      precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "cart_id"
   end
 
   add_index "line_items", ["album_id"], name: "index_line_items_on_album_id"
+  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id"
 
   create_table "orders", force: true do |t|
