@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140117062303) do
+ActiveRecord::Schema.define(version: 20140117081652) do
 
   create_table "albums", force: true do |t|
     t.string   "title"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20140117062303) do
   create_table "line_items", force: true do |t|
     t.integer  "order_id"
     t.integer  "album_id"
-    t.integer  "quantity"
+    t.integer  "quantity",                           default: 1
     t.decimal  "price",      precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
