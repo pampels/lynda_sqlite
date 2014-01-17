@@ -26,8 +26,6 @@ class LineItemsController < ApplicationController
   def create
   	@cart = current_cart
   	album = Album.find(params[:album_id])
-  	logger.info('----------------------------')
-  	logger.info(album)
     # @line_item = LineItem.new(line_item_params)
     @line_item = @cart.add_album(album.id)
 
