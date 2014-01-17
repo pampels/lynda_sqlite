@@ -1,4 +1,6 @@
 LyndaSqlite::Application.routes.draw do
+  resources :carts
+
   get 'admin/menu'
   get 'public/albums'
 
