@@ -1,4 +1,31 @@
-<p id="notice"><%= notice %></p>
+<h1>Your cart</h1>
+<% if notice %>
+<p id="notice" ><%= notice %></p>
+<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Album</th>
+      <th>Artist</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th></th>
+    </tr>
+  </thead>
 
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+  <tbody>
+    <% @cart.line_items.each do |line_item| %>
+      <tr>
+        <td><%= line_item.album.title %></td>
+        <td><%= line_item.album.artist.name %></td>
+        <td><%= line_item.price %></td>
+        <td><%= line_item.quantity %></td>
+        <td><%= link_to 'Destroy', line_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Buy more albums', public_albums_path %>
