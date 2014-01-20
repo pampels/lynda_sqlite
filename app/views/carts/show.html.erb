@@ -21,7 +21,7 @@
       	<td><%= image_tag line_item.album.image_path, size: '30x30' %></td>
         <td><%= line_item.album.title %></td>
         <td><%= line_item.album.artist.name %></td>
-        <td><%= line_item.album.price %></td>
+        <td><%= line_item.price %></td>
         <td><%= line_item.quantity %></td>
         <td><%= line_item.total_price %></td>
         <td><%= link_to 'Remove Item', line_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>

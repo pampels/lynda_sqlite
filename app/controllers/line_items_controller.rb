@@ -27,7 +27,7 @@ class LineItemsController < ApplicationController
   	@cart = current_cart
   	album = Album.find(params[:album_id])
     # @line_item = LineItem.new(line_item_params)
-    @line_item = @cart.add_album(album.id)
+    @line_item = @cart.add_album(album.id, album.price)
 
     respond_to do |format|
       if @line_item.save
