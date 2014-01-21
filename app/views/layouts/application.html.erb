@@ -14,7 +14,7 @@
 <%= link_to 'Orders', orders_path %> |
 <%= link_to 'Customers', customers_path %> |
 <%= link_to 'Line Items', line_items_path %> |
-<%= link_to 'My Cart', cart_path(session[:cart_id]) %>
+<%= link_to 'My Cart', cart_path(session[:cart_id] || 4) %>
 <%= yield %>
 
 </body>
