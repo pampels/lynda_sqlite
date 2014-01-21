@@ -1,7 +1,9 @@
 <% if notice %>
 <p id="notice" ><%= notice %></p>
 <% end %>
-<h1>Your cart</h1><%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: 'Are you sure you?'} %>
+<h1>Your cart</h1>
+<%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: 'Are you sure you?'} %>
+
 <table>
   <thead>
     <tr>
@@ -28,8 +30,9 @@
       </tr>
     <% end %>
       <tr>
-        <td colspan="4">SubTotal :</td>
+        <td colspan="5">SubTotal :</td>
         <td><strong><%= number_to_currency(@cart.total_price) %></strong></td>
+        <td><%= button_to 'Checkout', new_cart_path, method: :get %></td>
       </tr>
   </tbody>
 </table>
