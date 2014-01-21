@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140117081652) do
+ActiveRecord::Schema.define(version: 20140121103857) do
 
   create_table "albums", force: true do |t|
     t.string   "title"
@@ -82,5 +82,13 @@ ActiveRecord::Schema.define(version: 20140117081652) do
   end
 
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id"
+
+  create_table "users", force: true do |t|
+    t.string   "username"
+    t.string   "hashed_password"
+    t.string   "salt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

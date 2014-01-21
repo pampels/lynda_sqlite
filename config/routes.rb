@@ -1,4 +1,6 @@
 LyndaSqlite::Application.routes.draw do
+  resources :users
+
   resources :carts
 
   get 'admin/menu'
