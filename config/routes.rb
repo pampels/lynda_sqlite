@@ -1,24 +1,18 @@
 LyndaSqlite::Application.routes.draw do
-  get "sessions/new"
-  get "sessions/create"
-  get "sessions/destroy"
-  resources :users
-
-  resources :carts
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
 
   get 'admin/menu'
   get 'public/albums'
 
+  resources :users
+  resources :carts
   resources :customers
-
   resources :orders
-
   resources :features
-
   resources :artists
-
   resources :albums
-
   resources :line_items
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,6 +1,8 @@
 require 'digest/sha2'
 
 class User < ActiveRecord::Base
+	after_destroy :ensure_an_admin_remains
+
 	# check that the username is present and unique
 	validates :username, presence: true, uniqueness: true
 
@@ -12,6 +14,15 @@ class User < ActiveRecord::Base
 	attr_reader :password
 
 	validate :password_must_be_present
+
+	def User.authenticate(username, password)
+		logger.info("--> username: #{username} password: #{password}")
+		if user = find_by_username(username)
+			if user.hashed_password == encrypt_password(password, user.salt)
+				user
+			end
+		end
+	end
 
 	def User.encrypt_password(password, salt)
 		Digest::SHA2.hexdigest(password + "wibble" + salt)
@@ -33,5 +44,11 @@ class User < ActiveRecord::Base
 	end
 	def generate_salt
 		self.salt = self.object_id.to_s + rand.to_s
+	end
+
+	def ensure_an_admin_remains
+		if User.count.zero?
+			raise "Can't delete last user"
+		end
 	end
 end
